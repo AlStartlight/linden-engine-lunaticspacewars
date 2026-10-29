@@ -1,0 +1,2455 @@
+{
+  "entities": [
+    {
+      "active": true,
+      "components": [
+        {
+          "data": {
+            "children": [],
+            "isEnabled": true,
+            "parent": null,
+            "position": {
+              "x": 0,
+              "y": 4,
+              "z": 12
+            },
+            "rotation": {
+              "x": -10,
+              "y": 0,
+              "z": 0
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            }
+          },
+          "type": "Transform"
+        },
+        {
+          "data": {
+            "aspect": 1.7777777777777777,
+            "backgroundColor": {
+              "a": 1,
+              "b": 0.1,
+              "g": 0.1,
+              "r": 0.1
+            },
+            "far": 5000,
+            "fov": 65,
+            "isActive": true,
+            "isEnabled": true,
+            "near": 0.1
+          },
+          "type": "Camera"
+        }
+      ],
+      "id": "ent-camera-main",
+      "layer": 0,
+      "name": "Main Camera",
+      "parentId": null,
+      "static": false,
+      "tags": [
+        "MainCamera"
+      ]
+    },
+    {
+      "active": true,
+      "components": [
+        {
+          "data": {
+            "children": [],
+            "isEnabled": true,
+            "parent": null,
+            "position": {
+              "x": 100,
+              "y": 150,
+              "z": 100
+            },
+            "rotation": {
+              "x": 45,
+              "y": -30,
+              "z": 0
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            }
+          },
+          "type": "Transform"
+        },
+        {
+          "data": {
+            "castShadow": true,
+            "color": "#d8b4fe",
+            "intensity": 2.4,
+            "isEnabled": true,
+            "range": 100,
+            "type": "directional"
+          },
+          "type": "Light"
+        }
+      ],
+      "id": "ent-dir-sun",
+      "layer": 0,
+      "name": "Neon Star Sun",
+      "parentId": null,
+      "static": true,
+      "tags": []
+    },
+    {
+      "active": true,
+      "components": [
+        {
+          "data": {
+            "children": [],
+            "isEnabled": true,
+            "parent": null,
+            "position": {
+              "x": 0,
+              "y": 20,
+              "z": -50
+            },
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            }
+          },
+          "type": "Transform"
+        },
+        {
+          "data": {
+            "castShadow": false,
+            "color": "#00f0ff",
+            "intensity": 60,
+            "isEnabled": true,
+            "range": 300,
+            "type": "point"
+          },
+          "type": "Light"
+        }
+      ],
+      "id": "ent-point-cyan",
+      "layer": 0,
+      "name": "Point Cyan",
+      "parentId": null,
+      "static": true,
+      "tags": []
+    },
+    {
+      "active": true,
+      "components": [
+        {
+          "data": {
+            "children": [],
+            "isEnabled": true,
+            "parent": null,
+            "position": {
+              "x": -100,
+              "y": -20,
+              "z": -150
+            },
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            }
+          },
+          "type": "Transform"
+        },
+        {
+          "data": {
+            "castShadow": false,
+            "color": "#ff007f",
+            "intensity": 80,
+            "isEnabled": true,
+            "range": 400,
+            "type": "point"
+          },
+          "type": "Light"
+        }
+      ],
+      "id": "ent-point-magenta",
+      "layer": 0,
+      "name": "Point Magenta",
+      "parentId": null,
+      "static": true,
+      "tags": []
+    },
+    {
+      "active": true,
+      "components": [
+        {
+          "data": {
+            "children": [],
+            "isEnabled": true,
+            "parent": null,
+            "position": {
+              "x": -140,
+              "y": 40,
+              "z": -260
+            },
+            "rotation": {
+              "x": 15,
+              "y": 30,
+              "z": 0
+            },
+            "scale": {
+              "x": 50,
+              "y": 12,
+              "z": 50
+            }
+          },
+          "type": "Transform"
+        },
+        {
+          "data": {
+            "castShadow": true,
+            "color": "#00f0ff",
+            "isEnabled": true,
+            "isVisible": true,
+            "material": {},
+            "materialId": "",
+            "meshId": "",
+            "metalness": 0.9,
+            "primitive": "torus",
+            "receiveShadow": true,
+            "roughness": 0.2
+          },
+          "type": "MeshRenderer"
+        }
+      ],
+      "id": "ent-station",
+      "layer": 0,
+      "name": "Cyber Orbital Station 07",
+      "parentId": null,
+      "static": true,
+      "tags": [
+        "Station"
+      ]
+    },
+    {
+      "active": true,
+      "components": [
+        {
+          "data": {
+            "children": [],
+            "isEnabled": true,
+            "parent": null,
+            "position": {
+              "x": 0,
+              "y": 2.5,
+              "z": 0
+            },
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "scale": {
+              "x": 0.6,
+              "y": 0.4,
+              "z": 0.05
+            }
+          },
+          "type": "Transform"
+        },
+        {
+          "data": {
+            "castShadow": true,
+            "color": "#ff007f",
+            "isEnabled": true,
+            "isVisible": true,
+            "material": {},
+            "materialId": "",
+            "meshId": "",
+            "metalness": 0.1,
+            "primitive": "box",
+            "receiveShadow": true,
+            "roughness": 0.1
+          },
+          "type": "MeshRenderer"
+        }
+      ],
+      "id": "ent-billboard-1",
+      "layer": 0,
+      "name": "Billboard Helix",
+      "parentId": "ent-station",
+      "static": true,
+      "tags": [
+        "Hologram"
+      ]
+    },
+    {
+      "active": true,
+      "components": [
+        {
+          "data": {
+            "children": [],
+            "isEnabled": true,
+            "parent": null,
+            "position": {
+              "x": -80,
+              "y": -20,
+              "z": -100
+            },
+            "rotation": {
+              "x": 20,
+              "y": 40,
+              "z": 10
+            },
+            "scale": {
+              "x": 18,
+              "y": 16,
+              "z": 20
+            }
+          },
+          "type": "Transform"
+        },
+        {
+          "data": {
+            "castShadow": true,
+            "color": "#3a3640",
+            "isEnabled": true,
+            "isVisible": true,
+            "material": {},
+            "materialId": "",
+            "meshId": "",
+            "metalness": 0.2,
+            "primitive": "sphere",
+            "receiveShadow": true,
+            "roughness": 0.9
+          },
+          "type": "MeshRenderer"
+        },
+        {
+          "data": {
+            "center": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "isEnabled": true,
+            "isTrigger": false,
+            "material": {
+              "bounciness": 0.1,
+              "friction": 0.5
+            },
+            "onCollisionEnter": [],
+            "onCollisionExit": [],
+            "onTriggerEnter": [],
+            "onTriggerExit": [],
+            "radius": 9
+          },
+          "type": "SphereCollider"
+        }
+      ],
+      "id": "ent-asteroid-1",
+      "layer": 0,
+      "name": "Asteroid Alpha",
+      "parentId": null,
+      "static": true,
+      "tags": [
+        "Asteroid"
+      ]
+    },
+    {
+      "active": true,
+      "components": [
+        {
+          "data": {
+            "children": [],
+            "isEnabled": true,
+            "parent": null,
+            "position": {
+              "x": 90,
+              "y": 30,
+              "z": -140
+            },
+            "rotation": {
+              "x": 50,
+              "y": 10,
+              "z": 60
+            },
+            "scale": {
+              "x": 22,
+              "y": 25,
+              "z": 20
+            }
+          },
+          "type": "Transform"
+        },
+        {
+          "data": {
+            "castShadow": true,
+            "color": "#322e38",
+            "isEnabled": true,
+            "isVisible": true,
+            "material": {},
+            "materialId": "",
+            "meshId": "",
+            "metalness": 0.15,
+            "primitive": "sphere",
+            "receiveShadow": true,
+            "roughness": 0.95
+          },
+          "type": "MeshRenderer"
+        },
+        {
+          "data": {
+            "center": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "isEnabled": true,
+            "isTrigger": false,
+            "material": {
+              "bounciness": 0.1,
+              "friction": 0.5
+            },
+            "onCollisionEnter": [],
+            "onCollisionExit": [],
+            "onTriggerEnter": [],
+            "onTriggerExit": [],
+            "radius": 11
+          },
+          "type": "SphereCollider"
+        }
+      ],
+      "id": "ent-asteroid-2",
+      "layer": 0,
+      "name": "Asteroid Beta",
+      "parentId": null,
+      "static": true,
+      "tags": [
+        "Asteroid"
+      ]
+    },
+    {
+      "active": true,
+      "components": [
+        {
+          "data": {
+            "children": [],
+            "isEnabled": true,
+            "parent": null,
+            "position": {
+              "x": 0,
+              "y": -60,
+              "z": -200
+            },
+            "rotation": {
+              "x": 10,
+              "y": 80,
+              "z": 40
+            },
+            "scale": {
+              "x": 30,
+              "y": 28,
+              "z": 35
+            }
+          },
+          "type": "Transform"
+        },
+        {
+          "data": {
+            "castShadow": true,
+            "color": "#282430",
+            "isEnabled": true,
+            "isVisible": true,
+            "material": {},
+            "materialId": "",
+            "meshId": "",
+            "metalness": 0.25,
+            "primitive": "sphere",
+            "receiveShadow": true,
+            "roughness": 0.9
+          },
+          "type": "MeshRenderer"
+        },
+        {
+          "data": {
+            "center": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "isEnabled": true,
+            "isTrigger": false,
+            "material": {
+              "bounciness": 0.1,
+              "friction": 0.5
+            },
+            "onCollisionEnter": [],
+            "onCollisionExit": [],
+            "onTriggerEnter": [],
+            "onTriggerExit": [],
+            "radius": 15
+          },
+          "type": "SphereCollider"
+        }
+      ],
+      "id": "ent-asteroid-3",
+      "layer": 0,
+      "name": "Asteroid Gamma",
+      "parentId": null,
+      "static": true,
+      "tags": [
+        "Asteroid"
+      ]
+    },
+    {
+      "active": true,
+      "components": [
+        {
+          "data": {
+            "children": [],
+            "isEnabled": true,
+            "parent": null,
+            "position": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            }
+          },
+          "type": "Transform"
+        },
+        {
+          "data": {
+            "center": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "height": 2,
+            "isEnabled": true,
+            "isTrigger": false,
+            "material": {
+              "bounciness": 0.1,
+              "friction": 0.5
+            },
+            "onCollisionEnter": [],
+            "onCollisionExit": [],
+            "onTriggerEnter": [],
+            "onTriggerExit": [],
+            "radius": 0.5
+          },
+          "type": "CapsuleCollider"
+        },
+        {
+          "data": {
+            "height": 2,
+            "isEnabled": true,
+            "isGrounded": false,
+            "radius": 0.5,
+            "skinWidth": 0.05,
+            "slopeLimit": 90,
+            "stepOffset": 0.1
+          },
+          "type": "CharacterController"
+        },
+        {
+          "data": {
+            "acceleration": 30,
+            "airControl": 0.4,
+            "analogWalk": true,
+            "cameraRelative": false,
+            "coyoteTime": 0.1,
+            "crouchAction": "Crouch",
+            "crouchSpeed": 2,
+            "deceleration": 40,
+            "gravity": 0,
+            "isEnabled": true,
+            "jumpAction": "Jump",
+            "jumpBuffer": 0.1,
+            "jumpHeight": 1.2,
+            "lockAxis": "none",
+            "lookAction": "Look",
+            "lookSpeed": 150,
+            "maxJumps": 1,
+            "mode": "fly",
+            "moveAction": "Move",
+            "orientToMovement": false,
+            "qeMode": "turn",
+            "rotationSmoothing": 12,
+            "sprintAction": "Sprint",
+            "sprintSpeed": 75,
+            "turnAction": "Turn",
+            "turnSpeed": 150,
+            "verticalAction": "Vertical",
+            "walkSpeed": 38
+          },
+          "type": "CharacterMovement"
+        },
+        {
+          "data": {
+            "isEnabled": true,
+            "props": {},
+            "src": "scripts/SpaceGame.ts"
+          },
+          "type": "Script"
+        },
+        {
+          "data": {
+            "isEnabled": true,
+            "mode": "screen",
+            "pixelSize": 0.01,
+            "pointerEvents": false,
+            "src": "ui/game_hud.html",
+            "zIndex": 0
+          },
+          "type": "HtmlUI"
+        },
+        {
+          "data": {
+            "animation": "",
+            "castShadow": true,
+            "category": "aircraft_fighter",
+            "collider": "none",
+            "isEnabled": true,
+            "merge": true,
+            "parts": [
+              {
+                "id": "fuselage",
+                "material": {
+                  "color": "#364360",
+                  "metalness": 0.88,
+                  "preset": "car_paint",
+                  "roughness": 0.22
+                },
+                "name": "Fuselage",
+                "position": [
+                  0,
+                  0,
+                  0
+                ],
+                "shape": {
+                  "radius": 0.12,
+                  "size": [
+                    1.8,
+                    0.9,
+                    8.5
+                  ],
+                  "type": "roundedBox"
+                }
+              },
+              {
+                "attachTo": "fuselage",
+                "id": "nose",
+                "material": {
+                  "color": "#4f5f80",
+                  "metalness": 0.92,
+                  "preset": "metal_steel",
+                  "roughness": 0.25
+                },
+                "name": "Nose Prow",
+                "position": [
+                  0,
+                  0,
+                  -5.2
+                ],
+                "rotation": [
+                  -90,
+                  0,
+                  0
+                ],
+                "shape": {
+                  "height": 2.8,
+                  "radiusBottom": 0.85,
+                  "radiusTop": 0.15,
+                  "type": "cylinder"
+                }
+              },
+              {
+                "attachTo": "fuselage",
+                "id": "cockpit",
+                "material": {
+                  "color": "#00f0ff",
+                  "emissive": "#00f0ff",
+                  "emissiveIntensity": 1.1,
+                  "metalness": 0.2,
+                  "preset": "glass_clear",
+                  "roughness": 0.1
+                },
+                "name": "Cockpit Canopy",
+                "position": [
+                  0,
+                  0.55,
+                  -0.8
+                ],
+                "shape": {
+                  "radius": 0.18,
+                  "size": [
+                    1.1,
+                    0.55,
+                    3
+                  ],
+                  "type": "roundedBox"
+                }
+              },
+              {
+                "attachTo": "fuselage",
+                "id": "spine",
+                "material": {
+                  "color": "#222c40",
+                  "metalness": 0.8,
+                  "preset": "metal_steel",
+                  "roughness": 0.35
+                },
+                "name": "Spine Plating",
+                "position": [
+                  0,
+                  0.52,
+                  1.8
+                ],
+                "shape": {
+                  "radius": 0.05,
+                  "size": [
+                    0.8,
+                    0.2,
+                    4.5
+                  ],
+                  "type": "roundedBox"
+                }
+              },
+              {
+                "attachTo": "fuselage",
+                "id": "wing_left",
+                "material": {
+                  "color": "#3b4a6b",
+                  "metalness": 0.88,
+                  "preset": "car_paint",
+                  "roughness": 0.22
+                },
+                "name": "Main Wing Left",
+                "position": [
+                  -2.6,
+                  0.02,
+                  0.5
+                ],
+                "rotation": [
+                  0,
+                  -14,
+                  -3
+                ],
+                "shape": {
+                  "radius": 0.04,
+                  "size": [
+                    4,
+                    0.16,
+                    2.8
+                  ],
+                  "type": "roundedBox"
+                }
+              },
+              {
+                "attachTo": "fuselage",
+                "id": "wing_right",
+                "material": {
+                  "color": "#3b4a6b",
+                  "metalness": 0.88,
+                  "preset": "car_paint",
+                  "roughness": 0.22
+                },
+                "name": "Main Wing Right",
+                "position": [
+                  2.6,
+                  0.02,
+                  0.5
+                ],
+                "rotation": [
+                  0,
+                  14,
+                  3
+                ],
+                "shape": {
+                  "radius": 0.04,
+                  "size": [
+                    4,
+                    0.16,
+                    2.8
+                  ],
+                  "type": "roundedBox"
+                }
+              },
+              {
+                "attachTo": "wing_left",
+                "id": "wing_armor_left",
+                "material": {
+                  "color": "#54668e",
+                  "metalness": 0.9,
+                  "preset": "metal_steel",
+                  "roughness": 0.2
+                },
+                "name": "Wing Armor Left",
+                "position": [
+                  -2.4,
+                  0.12,
+                  0.6
+                ],
+                "rotation": [
+                  0,
+                  -14,
+                  -3
+                ],
+                "shape": {
+                  "radius": 0.03,
+                  "size": [
+                    3.4,
+                    0.08,
+                    2
+                  ],
+                  "type": "roundedBox"
+                }
+              },
+              {
+                "attachTo": "wing_right",
+                "id": "wing_armor_right",
+                "material": {
+                  "color": "#54668e",
+                  "metalness": 0.9,
+                  "preset": "metal_steel",
+                  "roughness": 0.2
+                },
+                "name": "Wing Armor Right",
+                "position": [
+                  2.4,
+                  0.12,
+                  0.6
+                ],
+                "rotation": [
+                  0,
+                  14,
+                  3
+                ],
+                "shape": {
+                  "radius": 0.03,
+                  "size": [
+                    3.4,
+                    0.08,
+                    2
+                  ],
+                  "type": "roundedBox"
+                }
+              },
+              {
+                "attachTo": "wing_left",
+                "id": "wing_stripe_left",
+                "material": {
+                  "color": "#00f0ff",
+                  "emissive": "#00f0ff",
+                  "emissiveIntensity": 1.3,
+                  "preset": "emissive_light"
+                },
+                "name": "Wing Neon Strip Left",
+                "position": [
+                  -2.6,
+                  0.08,
+                  -0.7
+                ],
+                "rotation": [
+                  0,
+                  -14,
+                  -3
+                ],
+                "shape": {
+                  "radius": 0.02,
+                  "size": [
+                    3.6,
+                    0.08,
+                    0.15
+                  ],
+                  "type": "roundedBox"
+                }
+              },
+              {
+                "attachTo": "wing_right",
+                "id": "wing_stripe_right",
+                "material": {
+                  "color": "#00f0ff",
+                  "emissive": "#00f0ff",
+                  "emissiveIntensity": 1.3,
+                  "preset": "emissive_light"
+                },
+                "name": "Wing Neon Strip Right",
+                "position": [
+                  2.6,
+                  0.08,
+                  -0.7
+                ],
+                "rotation": [
+                  0,
+                  14,
+                  3
+                ],
+                "shape": {
+                  "radius": 0.02,
+                  "size": [
+                    3.6,
+                    0.08,
+                    0.15
+                  ],
+                  "type": "roundedBox"
+                }
+              },
+              {
+                "attachTo": "wing_left",
+                "id": "fin_left",
+                "material": {
+                  "color": "#4f6288",
+                  "metalness": 0.9,
+                  "preset": "metal_steel",
+                  "roughness": 0.25
+                },
+                "name": "Wingtip Fin Left",
+                "position": [
+                  -4.6,
+                  0.55,
+                  0.8
+                ],
+                "rotation": [
+                  0,
+                  -5,
+                  5
+                ],
+                "shape": {
+                  "radius": 0.04,
+                  "size": [
+                    0.12,
+                    1.2,
+                    1.8
+                  ],
+                  "type": "roundedBox"
+                }
+              },
+              {
+                "attachTo": "wing_right",
+                "id": "fin_right",
+                "material": {
+                  "color": "#4f6288",
+                  "metalness": 0.9,
+                  "preset": "metal_steel",
+                  "roughness": 0.25
+                },
+                "name": "Wingtip Fin Right",
+                "position": [
+                  4.6,
+                  0.55,
+                  0.8
+                ],
+                "rotation": [
+                  0,
+                  5,
+                  -5
+                ],
+                "shape": {
+                  "radius": 0.04,
+                  "size": [
+                    0.12,
+                    1.2,
+                    1.8
+                  ],
+                  "type": "roundedBox"
+                }
+              },
+              {
+                "attachTo": "wing_left",
+                "id": "cannon_left",
+                "material": {
+                  "color": "#6a7b9e",
+                  "metalness": 0.95,
+                  "preset": "metal_steel",
+                  "roughness": 0.15
+                },
+                "name": "Laser Cannon Left",
+                "position": [
+                  -2.8,
+                  -0.12,
+                  -1.2
+                ],
+                "rotation": [
+                  -90,
+                  0,
+                  0
+                ],
+                "shape": {
+                  "height": 2.2,
+                  "radiusBottom": 0.12,
+                  "radiusTop": 0.1,
+                  "type": "cylinder"
+                }
+              },
+              {
+                "attachTo": "wing_right",
+                "id": "cannon_right",
+                "material": {
+                  "color": "#6a7b9e",
+                  "metalness": 0.95,
+                  "preset": "metal_steel",
+                  "roughness": 0.15
+                },
+                "name": "Laser Cannon Right",
+                "position": [
+                  2.8,
+                  -0.12,
+                  -1.2
+                ],
+                "rotation": [
+                  -90,
+                  0,
+                  0
+                ],
+                "shape": {
+                  "height": 2.2,
+                  "radiusBottom": 0.12,
+                  "radiusTop": 0.1,
+                  "type": "cylinder"
+                }
+              },
+              {
+                "attachTo": "fuselage",
+                "id": "engine_left",
+                "material": {
+                  "color": "#465472",
+                  "metalness": 0.9,
+                  "preset": "metal_steel",
+                  "roughness": 0.25
+                },
+                "name": "Ion Engine Left",
+                "position": [
+                  -0.8,
+                  0.05,
+                  4.4
+                ],
+                "rotation": [
+                  90,
+                  0,
+                  0
+                ],
+                "shape": {
+                  "height": 2,
+                  "radiusBottom": 0.52,
+                  "radiusTop": 0.42,
+                  "type": "cylinder"
+                }
+              },
+              {
+                "attachTo": "fuselage",
+                "id": "engine_right",
+                "material": {
+                  "color": "#465472",
+                  "metalness": 0.9,
+                  "preset": "metal_steel",
+                  "roughness": 0.25
+                },
+                "name": "Ion Engine Right",
+                "position": [
+                  0.8,
+                  0.05,
+                  4.4
+                ],
+                "rotation": [
+                  90,
+                  0,
+                  0
+                ],
+                "shape": {
+                  "height": 2,
+                  "radiusBottom": 0.52,
+                  "radiusTop": 0.42,
+                  "type": "cylinder"
+                }
+              },
+              {
+                "attachTo": "engine_left",
+                "id": "nozzle_left",
+                "material": {
+                  "color": "#8ca0c8",
+                  "metalness": 0.96,
+                  "preset": "metal_steel",
+                  "roughness": 0.15
+                },
+                "name": "Nozzle Left",
+                "position": [
+                  -0.8,
+                  0.05,
+                  5.35
+                ],
+                "rotation": [
+                  0,
+                  0,
+                  0
+                ],
+                "shape": {
+                  "radius": 0.48,
+                  "tube": 0.08,
+                  "type": "torus"
+                }
+              },
+              {
+                "attachTo": "engine_right",
+                "id": "nozzle_right",
+                "material": {
+                  "color": "#8ca0c8",
+                  "metalness": 0.96,
+                  "preset": "metal_steel",
+                  "roughness": 0.15
+                },
+                "name": "Nozzle Right",
+                "position": [
+                  0.8,
+                  0.05,
+                  5.35
+                ],
+                "rotation": [
+                  0,
+                  0,
+                  0
+                ],
+                "shape": {
+                  "radius": 0.48,
+                  "tube": 0.08,
+                  "type": "torus"
+                }
+              },
+              {
+                "attachTo": "engine_left",
+                "id": "glow_left",
+                "material": {
+                  "color": "#00f0ff",
+                  "emissive": "#00f0ff",
+                  "emissiveIntensity": 1.4,
+                  "preset": "emissive_light"
+                },
+                "name": "Glow Left",
+                "position": [
+                  -0.8,
+                  0.05,
+                  5.4
+                ],
+                "rotation": [
+                  90,
+                  0,
+                  0
+                ],
+                "shape": {
+                  "height": 0.25,
+                  "radiusBottom": 0.32,
+                  "radiusTop": 0.32,
+                  "type": "cylinder"
+                }
+              },
+              {
+                "attachTo": "engine_right",
+                "id": "glow_right",
+                "material": {
+                  "color": "#00f0ff",
+                  "emissive": "#00f0ff",
+                  "emissiveIntensity": 1.4,
+                  "preset": "emissive_light"
+                },
+                "name": "Glow Right",
+                "position": [
+                  0.8,
+                  0.05,
+                  5.4
+                ],
+                "rotation": [
+                  90,
+                  0,
+                  0
+                ],
+                "shape": {
+                  "height": 0.25,
+                  "radiusBottom": 0.32,
+                  "radiusTop": 0.32,
+                  "type": "cylinder"
+                }
+              }
+            ],
+            "placement": "free",
+            "receiveShadow": true,
+            "src": ""
+          },
+          "type": "Model"
+        }
+      ],
+      "id": "player_ship",
+      "layer": 0,
+      "name": "Viper-X Cyber Interceptor",
+      "parentId": null,
+      "static": false,
+      "tags": [
+        "Player"
+      ]
+    },
+    {
+      "active": true,
+      "components": [
+        {
+          "data": {
+            "children": [],
+            "isEnabled": true,
+            "parent": null,
+            "position": {
+              "x": 0,
+              "y": 12,
+              "z": 35
+            },
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            }
+          },
+          "type": "Transform"
+        },
+        {
+          "data": {
+            "castShadow": false,
+            "color": "#8be9fd",
+            "intensity": 65,
+            "isEnabled": true,
+            "range": 180,
+            "type": "point"
+          },
+          "type": "Light"
+        }
+      ],
+      "id": "ent-fill-rear",
+      "layer": 0,
+      "name": "Rear Fill Light",
+      "parentId": null,
+      "static": false,
+      "tags": []
+    },
+    {
+      "active": true,
+      "components": [
+        {
+          "data": {
+            "children": [],
+            "isEnabled": true,
+            "parent": null,
+            "position": {
+              "x": 1400,
+              "y": 750,
+              "z": -2900
+            },
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "scale": {
+              "x": 360,
+              "y": 360,
+              "z": 360
+            }
+          },
+          "type": "Transform"
+        },
+        {
+          "data": {
+            "castShadow": true,
+            "color": "#fff0a0",
+            "isEnabled": true,
+            "isVisible": true,
+            "material": {},
+            "materialId": "",
+            "meshId": "",
+            "metalness": 0,
+            "primitive": "sphere",
+            "receiveShadow": true,
+            "roughness": 0.1
+          },
+          "type": "MeshRenderer"
+        },
+        {
+          "data": {
+            "isEnabled": true,
+            "props": {
+              "rotSpeedY": 0.5
+            },
+            "src": "scripts/CelestialBody.ts"
+          },
+          "type": "Script"
+        }
+      ],
+      "id": "ent-star-sol",
+      "layer": 0,
+      "name": "Matahari Sol - Bintang Pusat Bimasakti",
+      "parentId": null,
+      "static": false,
+      "tags": [
+        "Star",
+        "Bimasakti"
+      ]
+    },
+    {
+      "active": true,
+      "components": [
+        {
+          "data": {
+            "children": [],
+            "isEnabled": true,
+            "parent": null,
+            "position": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            }
+          },
+          "type": "Transform"
+        },
+        {
+          "data": {
+            "castShadow": false,
+            "color": "#ffd27d",
+            "intensity": 120,
+            "isEnabled": true,
+            "range": 4500,
+            "type": "point"
+          },
+          "type": "Light"
+        }
+      ],
+      "id": "ent-sol-light",
+      "layer": 0,
+      "name": "Sol Solar Radiance Glow",
+      "parentId": "ent-star-sol",
+      "static": true,
+      "tags": []
+    },
+    {
+      "active": true,
+      "components": [
+        {
+          "data": {
+            "children": [],
+            "isEnabled": true,
+            "parent": null,
+            "position": {
+              "x": 840,
+              "y": 410,
+              "z": -1750
+            },
+            "rotation": {
+              "x": 5,
+              "y": 12,
+              "z": 0
+            },
+            "scale": {
+              "x": 50,
+              "y": 50,
+              "z": 50
+            }
+          },
+          "type": "Transform"
+        },
+        {
+          "data": {
+            "castShadow": true,
+            "color": "#78716c",
+            "isEnabled": true,
+            "isVisible": true,
+            "material": {},
+            "materialId": "",
+            "meshId": "",
+            "metalness": 0.25,
+            "primitive": "sphere",
+            "receiveShadow": true,
+            "roughness": 0.95
+          },
+          "type": "MeshRenderer"
+        },
+        {
+          "data": {
+            "isEnabled": true,
+            "props": {
+              "rotSpeedY": 0.8
+            },
+            "src": "scripts/CelestialBody.ts"
+          },
+          "type": "Script"
+        }
+      ],
+      "id": "ent-planet-merkurius",
+      "layer": 0,
+      "name": "Merkurius (Bimasakti)",
+      "parentId": null,
+      "static": false,
+      "tags": [
+        "Planet",
+        "Bimasakti"
+      ]
+    },
+    {
+      "active": true,
+      "components": [
+        {
+          "data": {
+            "children": [],
+            "isEnabled": true,
+            "parent": null,
+            "position": {
+              "x": 360,
+              "y": -170,
+              "z": -950
+            },
+            "rotation": {
+              "x": 177,
+              "y": 25,
+              "z": 0
+            },
+            "scale": {
+              "x": 95,
+              "y": 95,
+              "z": 95
+            }
+          },
+          "type": "Transform"
+        },
+        {
+          "data": {
+            "castShadow": true,
+            "color": "#fcd34d",
+            "isEnabled": true,
+            "isVisible": true,
+            "material": {},
+            "materialId": "",
+            "meshId": "",
+            "metalness": 0.15,
+            "primitive": "sphere",
+            "receiveShadow": true,
+            "roughness": 0.35
+          },
+          "type": "MeshRenderer"
+        },
+        {
+          "data": {
+            "isEnabled": true,
+            "props": {
+              "rotSpeedY": -0.6
+            },
+            "src": "scripts/CelestialBody.ts"
+          },
+          "type": "Script"
+        }
+      ],
+      "id": "ent-planet-venus",
+      "layer": 0,
+      "name": "Venus - Bintang Kejora (Bimasakti)",
+      "parentId": null,
+      "static": false,
+      "tags": [
+        "Planet",
+        "Bimasakti"
+      ]
+    },
+    {
+      "active": true,
+      "components": [
+        {
+          "data": {
+            "children": [],
+            "isEnabled": true,
+            "parent": null,
+            "position": {
+              "x": 540,
+              "y": 160,
+              "z": -1150
+            },
+            "rotation": {
+              "x": 23.5,
+              "y": 45,
+              "z": 0
+            },
+            "scale": {
+              "x": 110,
+              "y": 110,
+              "z": 110
+            }
+          },
+          "type": "Transform"
+        },
+        {
+          "data": {
+            "castShadow": true,
+            "color": "#1d4ed8",
+            "isEnabled": true,
+            "isVisible": true,
+            "material": {},
+            "materialId": "",
+            "meshId": "",
+            "metalness": 0.1,
+            "primitive": "sphere",
+            "receiveShadow": true,
+            "roughness": 0.45
+          },
+          "type": "MeshRenderer"
+        },
+        {
+          "data": {
+            "isEnabled": true,
+            "props": {
+              "rotSpeedY": 1.5
+            },
+            "src": "scripts/CelestialBody.ts"
+          },
+          "type": "Script"
+        }
+      ],
+      "id": "ent-planet-bumi",
+      "layer": 0,
+      "name": "Bumi - Terra Gaia (Bimasakti)",
+      "parentId": null,
+      "static": false,
+      "tags": [
+        "Planet",
+        "Bimasakti"
+      ]
+    },
+    {
+      "active": true,
+      "components": [
+        {
+          "data": {
+            "children": [],
+            "isEnabled": true,
+            "parent": null,
+            "position": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "scale": {
+              "x": 1.06,
+              "y": 1.06,
+              "z": 1.06
+            }
+          },
+          "type": "Transform"
+        },
+        {
+          "data": {
+            "castShadow": true,
+            "color": "#38bdf8",
+            "isEnabled": true,
+            "isVisible": true,
+            "material": {},
+            "materialId": "",
+            "meshId": "",
+            "metalness": 0.05,
+            "primitive": "sphere",
+            "receiveShadow": true,
+            "roughness": 0.2
+          },
+          "type": "MeshRenderer"
+        }
+      ],
+      "id": "ent-planet-bumi-atmo",
+      "layer": 0,
+      "name": "Bumi Atmosphere Layer",
+      "parentId": "ent-planet-bumi",
+      "static": false,
+      "tags": [
+        "Atmosphere"
+      ]
+    },
+    {
+      "active": true,
+      "components": [
+        {
+          "data": {
+            "children": [],
+            "isEnabled": true,
+            "parent": null,
+            "position": {
+              "x": 1.7,
+              "y": 0.45,
+              "z": 0.8
+            },
+            "rotation": {
+              "x": 0,
+              "y": 30,
+              "z": 0
+            },
+            "scale": {
+              "x": 0.27,
+              "y": 0.27,
+              "z": 0.27
+            }
+          },
+          "type": "Transform"
+        },
+        {
+          "data": {
+            "castShadow": true,
+            "color": "#9ca3af",
+            "isEnabled": true,
+            "isVisible": true,
+            "material": {},
+            "materialId": "",
+            "meshId": "",
+            "metalness": 0.15,
+            "primitive": "sphere",
+            "receiveShadow": true,
+            "roughness": 0.9
+          },
+          "type": "MeshRenderer"
+        },
+        {
+          "data": {
+            "isEnabled": true,
+            "props": {
+              "rotSpeedY": 1.8
+            },
+            "src": "scripts/CelestialBody.ts"
+          },
+          "type": "Script"
+        }
+      ],
+      "id": "ent-moon-luna",
+      "layer": 0,
+      "name": "Bulan - Luna",
+      "parentId": "ent-planet-bumi",
+      "static": false,
+      "tags": [
+        "Moon",
+        "Bimasakti"
+      ]
+    },
+    {
+      "active": true,
+      "components": [
+        {
+          "data": {
+            "children": [],
+            "isEnabled": true,
+            "parent": null,
+            "position": {
+              "x": -640,
+              "y": 200,
+              "z": -1280
+            },
+            "rotation": {
+              "x": 25,
+              "y": 60,
+              "z": 5
+            },
+            "scale": {
+              "x": 85,
+              "y": 85,
+              "z": 85
+            }
+          },
+          "type": "Transform"
+        },
+        {
+          "data": {
+            "castShadow": true,
+            "color": "#c2410c",
+            "isEnabled": true,
+            "isVisible": true,
+            "material": {},
+            "materialId": "",
+            "meshId": "",
+            "metalness": 0.15,
+            "primitive": "sphere",
+            "receiveShadow": true,
+            "roughness": 0.85
+          },
+          "type": "MeshRenderer"
+        },
+        {
+          "data": {
+            "isEnabled": true,
+            "props": {
+              "rotSpeedY": 1.4
+            },
+            "src": "scripts/CelestialBody.ts"
+          },
+          "type": "Script"
+        }
+      ],
+      "id": "ent-planet-mars",
+      "layer": 0,
+      "name": "Mars - Planet Merah (Bimasakti)",
+      "parentId": null,
+      "static": false,
+      "tags": [
+        "Planet",
+        "Bimasakti"
+      ]
+    },
+    {
+      "active": true,
+      "components": [
+        {
+          "data": {
+            "children": [],
+            "isEnabled": true,
+            "parent": null,
+            "position": {
+              "x": 1.65,
+              "y": 0.35,
+              "z": -0.6
+            },
+            "rotation": {
+              "x": 10,
+              "y": 20,
+              "z": 30
+            },
+            "scale": {
+              "x": 0.14,
+              "y": 0.12,
+              "z": 0.15
+            }
+          },
+          "type": "Transform"
+        },
+        {
+          "data": {
+            "castShadow": true,
+            "color": "#475569",
+            "isEnabled": true,
+            "isVisible": true,
+            "material": {},
+            "materialId": "",
+            "meshId": "",
+            "metalness": 0.2,
+            "primitive": "sphere",
+            "receiveShadow": true,
+            "roughness": 0.95
+          },
+          "type": "MeshRenderer"
+        }
+      ],
+      "id": "ent-moon-phobos",
+      "layer": 0,
+      "name": "Phobos Moon",
+      "parentId": "ent-planet-mars",
+      "static": false,
+      "tags": [
+        "Moon",
+        "Bimasakti"
+      ]
+    },
+    {
+      "active": true,
+      "components": [
+        {
+          "data": {
+            "children": [],
+            "isEnabled": true,
+            "parent": null,
+            "position": {
+              "x": 1200,
+              "y": 440,
+              "z": -2200
+            },
+            "rotation": {
+              "x": 3,
+              "y": 15,
+              "z": 0
+            },
+            "scale": {
+              "x": 270,
+              "y": 270,
+              "z": 270
+            }
+          },
+          "type": "Transform"
+        },
+        {
+          "data": {
+            "castShadow": true,
+            "color": "#d97706",
+            "isEnabled": true,
+            "isVisible": true,
+            "material": {},
+            "materialId": "",
+            "meshId": "",
+            "metalness": 0.1,
+            "primitive": "sphere",
+            "receiveShadow": true,
+            "roughness": 0.65
+          },
+          "type": "MeshRenderer"
+        },
+        {
+          "data": {
+            "isEnabled": true,
+            "props": {
+              "rotSpeedY": 2.8
+            },
+            "src": "scripts/CelestialBody.ts"
+          },
+          "type": "Script"
+        }
+      ],
+      "id": "ent-planet-jupiter",
+      "layer": 0,
+      "name": "Jupiter - Raksasa Gas (Bimasakti)",
+      "parentId": null,
+      "static": false,
+      "tags": [
+        "Planet",
+        "Bimasakti"
+      ]
+    },
+    {
+      "active": true,
+      "components": [
+        {
+          "data": {
+            "children": [],
+            "isEnabled": true,
+            "parent": null,
+            "position": {
+              "x": -1.75,
+              "y": 0.25,
+              "z": 0.85
+            },
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "scale": {
+              "x": 0.16,
+              "y": 0.16,
+              "z": 0.16
+            }
+          },
+          "type": "Transform"
+        },
+        {
+          "data": {
+            "castShadow": true,
+            "color": "#e2e8f0",
+            "isEnabled": true,
+            "isVisible": true,
+            "material": {},
+            "materialId": "",
+            "meshId": "",
+            "metalness": 0.1,
+            "primitive": "sphere",
+            "receiveShadow": true,
+            "roughness": 0.35
+          },
+          "type": "MeshRenderer"
+        }
+      ],
+      "id": "ent-moon-europa",
+      "layer": 0,
+      "name": "Europa Moon",
+      "parentId": "ent-planet-jupiter",
+      "static": false,
+      "tags": [
+        "Moon",
+        "Bimasakti"
+      ]
+    },
+    {
+      "active": true,
+      "components": [
+        {
+          "data": {
+            "children": [],
+            "isEnabled": true,
+            "parent": null,
+            "position": {
+              "x": -1120,
+              "y": 340,
+              "z": -1900
+            },
+            "rotation": {
+              "x": 26,
+              "y": 45,
+              "z": 12
+            },
+            "scale": {
+              "x": 195,
+              "y": 195,
+              "z": 195
+            }
+          },
+          "type": "Transform"
+        },
+        {
+          "data": {
+            "castShadow": true,
+            "color": "#facc15",
+            "isEnabled": true,
+            "isVisible": true,
+            "material": {},
+            "materialId": "",
+            "meshId": "",
+            "metalness": 0.15,
+            "primitive": "sphere",
+            "receiveShadow": true,
+            "roughness": 0.55
+          },
+          "type": "MeshRenderer"
+        },
+        {
+          "data": {
+            "isEnabled": true,
+            "props": {
+              "rotSpeedY": 2
+            },
+            "src": "scripts/CelestialBody.ts"
+          },
+          "type": "Script"
+        }
+      ],
+      "id": "ent-planet-saturnus",
+      "layer": 0,
+      "name": "Saturnus - Permata Cincin (Bimasakti)",
+      "parentId": null,
+      "static": false,
+      "tags": [
+        "Planet",
+        "Bimasakti"
+      ]
+    },
+    {
+      "active": true,
+      "components": [
+        {
+          "data": {
+            "children": [],
+            "isEnabled": true,
+            "parent": null,
+            "position": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "rotation": {
+              "x": 82,
+              "y": 0,
+              "z": 0
+            },
+            "scale": {
+              "x": 2.2,
+              "y": 2.2,
+              "z": 0.025
+            }
+          },
+          "type": "Transform"
+        },
+        {
+          "data": {
+            "castShadow": true,
+            "color": "#eab308",
+            "isEnabled": true,
+            "isVisible": true,
+            "material": {},
+            "materialId": "",
+            "meshId": "",
+            "metalness": 0.2,
+            "primitive": "torus",
+            "receiveShadow": true,
+            "roughness": 0.4
+          },
+          "type": "MeshRenderer"
+        }
+      ],
+      "id": "ent-saturn-ring-main",
+      "layer": 0,
+      "name": "Saturnus Cincin Utama",
+      "parentId": "ent-planet-saturnus",
+      "static": false,
+      "tags": [
+        "Rings"
+      ]
+    },
+    {
+      "active": true,
+      "components": [
+        {
+          "data": {
+            "children": [],
+            "isEnabled": true,
+            "parent": null,
+            "position": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "rotation": {
+              "x": 82,
+              "y": 0,
+              "z": 0
+            },
+            "scale": {
+              "x": 2.8,
+              "y": 2.8,
+              "z": 0.018
+            }
+          },
+          "type": "Transform"
+        },
+        {
+          "data": {
+            "castShadow": true,
+            "color": "#ca8a04",
+            "isEnabled": true,
+            "isVisible": true,
+            "material": {},
+            "materialId": "",
+            "meshId": "",
+            "metalness": 0.25,
+            "primitive": "torus",
+            "receiveShadow": true,
+            "roughness": 0.45
+          },
+          "type": "MeshRenderer"
+        }
+      ],
+      "id": "ent-saturn-ring-outer",
+      "layer": 0,
+      "name": "Saturnus Cincin Luar",
+      "parentId": "ent-planet-saturnus",
+      "static": false,
+      "tags": [
+        "Rings"
+      ]
+    },
+    {
+      "active": true,
+      "components": [
+        {
+          "data": {
+            "children": [],
+            "isEnabled": true,
+            "parent": null,
+            "position": {
+              "x": 2.5,
+              "y": 0.7,
+              "z": -1.1
+            },
+            "rotation": {
+              "x": 0,
+              "y": 45,
+              "z": 0
+            },
+            "scale": {
+              "x": 0.21,
+              "y": 0.21,
+              "z": 0.21
+            }
+          },
+          "type": "Transform"
+        },
+        {
+          "data": {
+            "castShadow": true,
+            "color": "#fb923c",
+            "isEnabled": true,
+            "isVisible": true,
+            "material": {},
+            "materialId": "",
+            "meshId": "",
+            "metalness": 0.1,
+            "primitive": "sphere",
+            "receiveShadow": true,
+            "roughness": 0.7
+          },
+          "type": "MeshRenderer"
+        }
+      ],
+      "id": "ent-moon-titan",
+      "layer": 0,
+      "name": "Titan Moon",
+      "parentId": "ent-planet-saturnus",
+      "static": false,
+      "tags": [
+        "Moon",
+        "Bimasakti"
+      ]
+    },
+    {
+      "active": true,
+      "components": [
+        {
+          "data": {
+            "children": [],
+            "isEnabled": true,
+            "parent": null,
+            "position": {
+              "x": 820,
+              "y": -290,
+              "z": -1550
+            },
+            "rotation": {
+              "x": 86,
+              "y": 20,
+              "z": 0
+            },
+            "scale": {
+              "x": 135,
+              "y": 135,
+              "z": 135
+            }
+          },
+          "type": "Transform"
+        },
+        {
+          "data": {
+            "castShadow": true,
+            "color": "#2dd4bf",
+            "isEnabled": true,
+            "isVisible": true,
+            "material": {},
+            "materialId": "",
+            "meshId": "",
+            "metalness": 0.15,
+            "primitive": "sphere",
+            "receiveShadow": true,
+            "roughness": 0.45
+          },
+          "type": "MeshRenderer"
+        },
+        {
+          "data": {
+            "isEnabled": true,
+            "props": {
+              "rotSpeedY": 1.2
+            },
+            "src": "scripts/CelestialBody.ts"
+          },
+          "type": "Script"
+        }
+      ],
+      "id": "ent-planet-uranus",
+      "layer": 0,
+      "name": "Uranus - Raksasa Es Tosika (Bimasakti)",
+      "parentId": null,
+      "static": false,
+      "tags": [
+        "Planet",
+        "Bimasakti"
+      ]
+    },
+    {
+      "active": true,
+      "components": [
+        {
+          "data": {
+            "children": [],
+            "isEnabled": true,
+            "parent": null,
+            "position": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "rotation": {
+              "x": 90,
+              "y": 0,
+              "z": 0
+            },
+            "scale": {
+              "x": 1.9,
+              "y": 1.9,
+              "z": 0.02
+            }
+          },
+          "type": "Transform"
+        },
+        {
+          "data": {
+            "castShadow": true,
+            "color": "#5eead4",
+            "isEnabled": true,
+            "isVisible": true,
+            "material": {},
+            "materialId": "",
+            "meshId": "",
+            "metalness": 0.2,
+            "primitive": "torus",
+            "receiveShadow": true,
+            "roughness": 0.35
+          },
+          "type": "MeshRenderer"
+        }
+      ],
+      "id": "ent-uranus-ring",
+      "layer": 0,
+      "name": "Uranus Cincin Vertikal",
+      "parentId": "ent-planet-uranus",
+      "static": false,
+      "tags": [
+        "Rings"
+      ]
+    },
+    {
+      "active": true,
+      "components": [
+        {
+          "data": {
+            "children": [],
+            "isEnabled": true,
+            "parent": null,
+            "position": {
+              "x": -520,
+              "y": -360,
+              "z": -1750
+            },
+            "rotation": {
+              "x": 28,
+              "y": 40,
+              "z": 10
+            },
+            "scale": {
+              "x": 145,
+              "y": 145,
+              "z": 145
+            }
+          },
+          "type": "Transform"
+        },
+        {
+          "data": {
+            "castShadow": true,
+            "color": "#2563eb",
+            "isEnabled": true,
+            "isVisible": true,
+            "material": {},
+            "materialId": "",
+            "meshId": "",
+            "metalness": 0.25,
+            "primitive": "sphere",
+            "receiveShadow": true,
+            "roughness": 0.4
+          },
+          "type": "MeshRenderer"
+        },
+        {
+          "data": {
+            "isEnabled": true,
+            "props": {
+              "rotSpeedY": 1.4
+            },
+            "src": "scripts/CelestialBody.ts"
+          },
+          "type": "Script"
+        }
+      ],
+      "id": "ent-planet-neptunus",
+      "layer": 0,
+      "name": "Neptunus - Raksasa Es Biru (Bimasakti)",
+      "parentId": null,
+      "static": false,
+      "tags": [
+        "Planet",
+        "Bimasakti"
+      ]
+    },
+    {
+      "active": true,
+      "components": [
+        {
+          "data": {
+            "children": [],
+            "isEnabled": true,
+            "parent": null,
+            "position": {
+              "x": -1.95,
+              "y": -0.45,
+              "z": 0.75
+            },
+            "rotation": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "scale": {
+              "x": 0.18,
+              "y": 0.18,
+              "z": 0.18
+            }
+          },
+          "type": "Transform"
+        },
+        {
+          "data": {
+            "castShadow": true,
+            "color": "#93c5fd",
+            "isEnabled": true,
+            "isVisible": true,
+            "material": {},
+            "materialId": "",
+            "meshId": "",
+            "metalness": 0.1,
+            "primitive": "sphere",
+            "receiveShadow": true,
+            "roughness": 0.5
+          },
+          "type": "MeshRenderer"
+        }
+      ],
+      "id": "ent-moon-triton",
+      "layer": 0,
+      "name": "Triton Moon",
+      "parentId": "ent-planet-neptunus",
+      "static": false,
+      "tags": [
+        "Moon",
+        "Bimasakti"
+      ]
+    },
+    {
+      "active": true,
+      "components": [
+        {
+          "data": {
+            "children": [],
+            "isEnabled": true,
+            "parent": null,
+            "position": {
+              "x": -350,
+              "y": -480,
+              "z": -2100
+            },
+            "rotation": {
+              "x": 120,
+              "y": 30,
+              "z": 15
+            },
+            "scale": {
+              "x": 38,
+              "y": 38,
+              "z": 38
+            }
+          },
+          "type": "Transform"
+        },
+        {
+          "data": {
+            "castShadow": true,
+            "color": "#a855f7",
+            "isEnabled": true,
+            "isVisible": true,
+            "material": {},
+            "materialId": "",
+            "meshId": "",
+            "metalness": 0.1,
+            "primitive": "sphere",
+            "receiveShadow": true,
+            "roughness": 0.8
+          },
+          "type": "MeshRenderer"
+        },
+        {
+          "data": {
+            "isEnabled": true,
+            "props": {
+              "rotSpeedY": 0.6
+            },
+            "src": "scripts/CelestialBody.ts"
+          },
+          "type": "Script"
+        }
+      ],
+      "id": "ent-planet-pluto",
+      "layer": 0,
+      "name": "Pluto - Sabuk Kuiper (Bimasakti)",
+      "parentId": null,
+      "static": false,
+      "tags": [
+        "Planet",
+        "Bimasakti"
+      ]
+    }
+  ],
+  "format": "linden-scene",
+  "name": "Main",
+  "settings": {
+    "ambientColor": "#4b5578",
+    "ambientIntensity": 1.4,
+    "backgroundBlurriness": 0,
+    "environment": "none",
+    "environmentIntensity": 1,
+    "exposure": 1.35,
+    "fog": {
+      "color": "#c8d2dc",
+      "density": 0.015,
+      "enabled": false,
+      "far": 120,
+      "near": 10,
+      "type": "exp2"
+    },
+    "postFx": {
+      "antialias": "fxaa",
+      "ao": true,
+      "aoIntensity": 0.8,
+      "bloom": true,
+      "bloomRadius": 0.35,
+      "bloomStrength": 1.2,
+      "bloomThreshold": 0.82,
+      "enabled": true
+    },
+    "shadowQuality": "high",
+    "skybox": "#03000a",
+    "sun": {
+      "color": "#fff4e5",
+      "direction": [
+        0.5,
+        1,
+        0.35
+      ],
+      "enabled": true,
+      "intensity": 2.5
+    },
+    "toneMapping": "agx"
+  },
+  "version": 2
+}

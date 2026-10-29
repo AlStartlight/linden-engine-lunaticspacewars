@@ -1,0 +1,830 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@600;800;900&display=swap');
+
+  * {
+    box-sizing: border-box;
+    user-select: none;
+    -webkit-user-select: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  body, html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: transparent;
+    font-family: 'Share Tech Mono', monospace;
+    color: #00f0ff;
+  }
+
+  .scanlines {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(rgba(18, 16, 26, 0) 50%, rgba(0, 0, 0, 0.22) 50%);
+    background-size: 100% 4px;
+    z-index: 1000;
+    opacity: 0.3;
+  }
+
+  .hud-container {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 14px 18px;
+    z-index: 10;
+  }
+
+  /* TOP BAR */
+  .top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(8, 6, 16, 0.7);
+    border: 1px solid rgba(0, 240, 255, 0.45);
+    box-shadow: 0 0 16px rgba(0, 240, 255, 0.25);
+    padding: 6px 16px;
+    clip-path: polygon(0 0, 100% 0, 98% 100%, 2% 100%);
+    backdrop-filter: blur(4px);
+    pointer-events: auto;
+  }
+
+  .title-glitch {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 18px;
+    font-weight: 900;
+    color: #ff007f;
+    text-shadow: 0 0 8px #ff007f, 0 0 20px rgba(255, 0, 127, 0.6);
+    letter-spacing: 2px;
+  }
+
+  .top-stats {
+    display: flex;
+    gap: 20px;
+    font-size: 13px;
+  }
+
+  .stat-chip {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .stat-chip .val {
+    color: #ffe600;
+    font-weight: bold;
+    text-shadow: 0 0 6px #ffe600;
+  }
+
+  /* IN-SPACE HOLOGRAPHIC BRACKETS (EVE ONLINE STYLE) */
+  .brackets-layer {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 5;
+  }
+
+  .space-bracket {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    pointer-events: auto;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    transition: transform 0.05s ease-out;
+  }
+
+  .space-bracket:hover .bracket-reticle {
+    border-color: #ffe600;
+    transform: scale(1.15);
+  }
+
+  .bracket-reticle {
+    width: 28px;
+    height: 28px;
+    border: 1.5px solid #00f0ff;
+    position: relative;
+    box-shadow: 0 0 8px rgba(0, 240, 255, 0.5);
+    transition: all 0.15s;
+  }
+
+  .space-bracket.enemy .bracket-reticle {
+    border-color: #ff0055;
+    box-shadow: 0 0 8px #ff0055;
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); /* diamond */
+  }
+
+  .space-bracket.boss .bracket-reticle {
+    border-color: #c084fc;
+    box-shadow: 0 0 14px #c084fc;
+    width: 38px;
+    height: 38px;
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%); /* hex */
+  }
+
+  .space-bracket.station .bracket-reticle {
+    border-color: #00f0ff;
+    border-radius: 50%;
+  }
+
+  .space-bracket.asteroid .bracket-reticle {
+    border-color: #94a3b8;
+    width: 20px;
+    height: 20px;
+  }
+
+  .space-bracket.pickup .bracket-reticle {
+    border-color: #22c55e;
+    box-shadow: 0 0 8px #22c55e;
+    border-radius: 4px;
+    width: 22px;
+    height: 22px;
+  }
+
+  .space-bracket.locked .bracket-reticle {
+    border-color: #ffe600 !important;
+    box-shadow: 0 0 18px #ffe600 !important;
+    animation: pulseReticle 1s infinite alternate;
+  }
+
+  @keyframes pulseReticle {
+    0% { transform: scale(1.0); }
+    100% { transform: scale(1.22); }
+  }
+
+  .bracket-label {
+    font-size: 10px;
+    background: rgba(8, 6, 16, 0.75);
+    padding: 1px 5px;
+    border-radius: 2px;
+    white-space: nowrap;
+    border-left: 2px solid #00f0ff;
+    text-shadow: 0 0 4px #000;
+  }
+
+  .space-bracket.enemy .bracket-label { border-left-color: #ff0055; color: #ff99aa; }
+  .space-bracket.boss .bracket-label { border-left-color: #c084fc; color: #e9d5ff; font-weight: bold; }
+  .space-bracket.station .bracket-label { border-left-color: #00f0ff; color: #67e8f9; }
+  .space-bracket.pickup .bracket-label { border-left-color: #22c55e; color: #86efac; }
+
+  .bracket-bars {
+    width: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5px;
+  }
+
+  .bracket-bar-track {
+    width: 100%;
+    height: 2.5px;
+    background: rgba(0, 0, 0, 0.6);
+  }
+
+  .bracket-bar-fill {
+    height: 100%;
+  }
+
+  /* OFF-SCREEN EDGE POINTERS */
+  .edge-pointer {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 12px solid #ff0055;
+    pointer-events: none;
+    z-index: 6;
+    filter: drop-shadow(0 0 5px #ff0055);
+  }
+
+  /* EVE ONLINE SELECTED TARGET HUD (TOP-RIGHT) */
+  .target-hud {
+    position: absolute;
+    top: 65px;
+    right: 20px;
+    width: 290px;
+    background: rgba(10, 7, 20, 0.82);
+    border: 1px solid rgba(0, 240, 255, 0.5);
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.25);
+    padding: 12px;
+    clip-path: polygon(0 0, 90% 0, 100% 10%, 100% 100%, 10% 100%, 0 90%);
+    backdrop-filter: blur(5px);
+    display: none;
+    pointer-events: auto;
+    z-index: 20;
+  }
+
+  .target-hud.active {
+    display: block;
+  }
+
+  .target-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 240, 255, 0.25);
+    padding-bottom: 6px;
+    margin-bottom: 8px;
+  }
+
+  .target-name {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    color: #ffe600;
+    text-shadow: 0 0 6px #ffe600;
+  }
+
+  .target-vitals {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 10px;
+  }
+
+  .target-vital-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+  }
+
+  .target-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+
+  .btn-target-act {
+    background: rgba(0, 240, 255, 0.1);
+    border: 1px solid #00f0ff;
+    color: #00f0ff;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    padding: 6px 4px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .btn-target-act:hover {
+    background: #00f0ff;
+    color: #000;
+    box-shadow: 0 0 10px #00f0ff;
+  }
+
+  .btn-target-act.orange {
+    border-color: #f97316;
+    color: #f97316;
+  }
+  .btn-target-act.orange:hover {
+    background: #f97316;
+    color: #000;
+    box-shadow: 0 0 10px #f97316;
+  }
+
+  /* EVE ONLINE TACTICAL OVERVIEW DRAWER (RIGHT) */
+  .overview-panel {
+    position: absolute;
+    top: 260px;
+    right: 20px;
+    width: 270px;
+    background: rgba(8, 6, 16, 0.78);
+    border: 1px solid rgba(0, 240, 255, 0.4);
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.18);
+    backdrop-filter: blur(4px);
+    display: flex;
+    flex-direction: column;
+    max-height: 280px;
+    clip-path: polygon(0 0, 95% 0, 100% 5%, 100% 100%, 0 100%);
+    pointer-events: auto;
+    z-index: 20;
+  }
+
+  .overview-header {
+    background: rgba(0, 240, 255, 0.12);
+    padding: 6px 10px;
+    font-size: 11px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(0, 240, 255, 0.3);
+  }
+
+  .overview-list {
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .overview-row {
+    padding: 5px 10px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+
+  .overview-row:hover {
+    background: rgba(0, 240, 255, 0.2);
+  }
+
+  .overview-row.selected {
+    background: rgba(255, 230, 0, 0.2);
+    border-left: 3px solid #ffe600;
+  }
+
+  /* KILL FEED */
+  .kill-feed {
+    position: absolute;
+    top: 65px;
+    left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: flex-start;
+    pointer-events: none;
+    z-index: 20;
+  }
+
+  .kill-item {
+    background: rgba(14, 8, 26, 0.85);
+    border-left: 3px solid #ff007f;
+    color: #fff;
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 2px;
+    box-shadow: 0 0 10px rgba(255, 0, 127, 0.3);
+    animation: fadeOut 5s forwards;
+  }
+
+  /* CENTER RETICLE */
+  .reticle-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  .crosshair {
+    width: 38px;
+    height: 38px;
+    border: 1.5px solid rgba(0, 240, 255, 0.7);
+    border-radius: 50%;
+    position: relative;
+    box-shadow: 0 0 8px rgba(0, 240, 255, 0.4);
+  }
+
+  .crosshair::before, .crosshair::after {
+    content: '';
+    position: absolute;
+    background: #00f0ff;
+  }
+  .crosshair::before { width: 8px; height: 1.5px; top: 50%; left: -14px; transform: translateY(-50%); }
+  .crosshair::after { width: 8px; height: 1.5px; top: 50%; right: -14px; transform: translateY(-50%); }
+
+  .lead-marker {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border: 1.5px dashed #ffe600;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    box-shadow: 0 0 8px #ffe600;
+  }
+
+  /* BOTTOM AREA */
+  .bottom-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    pointer-events: none;
+  }
+
+  /* VITALS PANEL */
+  .vitals-panel {
+    background: rgba(10, 7, 20, 0.8);
+    border: 1px solid rgba(0, 240, 255, 0.45);
+    padding: 12px 16px;
+    width: 280px;
+    clip-path: polygon(0 0, 85% 0, 100% 25%, 100% 100%, 0 100%);
+    box-shadow: 0 0 14px rgba(0, 240, 255, 0.2);
+    pointer-events: auto;
+  }
+
+  .vital-row { margin-bottom: 7px; }
+  .vital-label { display: flex; justify-content: space-between; font-size: 11px; margin-bottom: 3px; }
+
+  .bar-bg {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    overflow: hidden;
+  }
+
+  .bar-fill { height: 100%; transition: width 0.1s linear; }
+  .hull-fill { background: linear-gradient(90deg, #ff0055, #ff007f); box-shadow: 0 0 8px #ff007f; }
+  .shield-fill { background: linear-gradient(90deg, #0099ff, #00f0ff); box-shadow: 0 0 8px #00f0ff; }
+  .energy-fill { background: linear-gradient(90deg, #eab308, #ffe600); box-shadow: 0 0 8px #ffe600; }
+
+  .speedometer {
+    margin-top: 8px;
+    font-size: 12px;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* RADAR */
+  .radar-panel {
+    background: rgba(10, 7, 20, 0.8);
+    border: 1px solid rgba(0, 240, 255, 0.45);
+    padding: 8px;
+    clip-path: polygon(15% 0, 100% 0, 100% 100%, 0 100%, 0 25%);
+    box-shadow: 0 0 14px rgba(0, 240, 255, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    pointer-events: auto;
+  }
+
+  .radar-canvas {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 240, 255, 0.1) 0%, rgba(8, 4, 16, 0.85) 75%);
+    border: 1px solid rgba(0, 240, 255, 0.5);
+  }
+
+  .radar-info {
+    font-size: 11px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  /* CINEMATIC TRANSLUCENT OVERLAYS (SPACESHIP IS FULLY VISIBLE IN BACKGROUND) */
+  .menu-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 75% 50%, rgba(10, 6, 20, 0.2) 0%, rgba(4, 2, 10, 0.75) 100%);
+    display: none;
+    align-items: center;
+    padding-left: 60px;
+    z-index: 50;
+    pointer-events: auto;
+  }
+
+  .menu-overlay.active {
+    display: flex;
+  }
+
+  .cyber-panel-side {
+    background: rgba(10, 7, 22, 0.85);
+    border: 1px solid #00f0ff;
+    box-shadow: 0 0 25px rgba(0, 240, 255, 0.25);
+    padding: 24px;
+    width: 420px;
+    max-height: 85vh;
+    overflow-y: auto;
+    clip-path: polygon(0 0, 92% 0, 100% 8%, 100% 100%, 8% 100%, 0 92%);
+    backdrop-filter: blur(6px);
+  }
+
+  .cyber-box-center {
+    background: rgba(10, 7, 22, 0.9);
+    border: 1px solid #00f0ff;
+    box-shadow: 0 0 30px rgba(0, 240, 255, 0.3);
+    padding: 26px;
+    max-width: 900px;
+    width: 90%;
+    max-height: 88vh;
+    overflow-y: auto;
+    margin: 0 auto;
+    clip-path: polygon(0 0, 95% 0, 100% 5%, 100% 100%, 5% 100%, 0 95%);
+    backdrop-filter: blur(8px);
+  }
+
+  .cyber-btn {
+    background: rgba(0, 240, 255, 0.1);
+    border: 1px solid #00f0ff;
+    color: #00f0ff;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 9px 18px;
+    cursor: pointer;
+    letter-spacing: 1.5px;
+    clip-path: polygon(0 0, 90% 0, 100% 30%, 100% 100%, 10% 100%, 0 70%);
+    transition: all 0.2s;
+  }
+
+  .cyber-btn:hover {
+    background: #00f0ff;
+    color: #000;
+    box-shadow: 0 0 16px #00f0ff;
+    transform: translateY(-2px);
+  }
+
+  .cyber-btn.magenta { border-color: #ff007f; color: #ff007f; background: rgba(255, 0, 127, 0.1); }
+  .cyber-btn.magenta:hover { background: #ff007f; color: #fff; box-shadow: 0 0 16px #ff007f; }
+
+  .cyber-btn.yellow { border-color: #ffe600; color: #ffe600; background: rgba(255, 230, 0, 0.1); }
+  .cyber-btn.yellow:hover { background: #ffe600; color: #000; box-shadow: 0 0 16px #ffe600; }
+
+  /* HANGAR STATS */
+  .stat-bar-container { display: flex; flex-direction: column; gap: 2px; margin-bottom: 8px; }
+  .stat-bar-outer { height: 8px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(0, 240, 255, 0.3); }
+  .stat-bar-inner { height: 100%; background: #00f0ff; box-shadow: 0 0 8px #00f0ff; }
+
+  /* GALAXY GRID */
+  .galaxy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 10px;
+    margin-top: 14px;
+    max-height: 400px;
+    overflow-y: auto;
+  }
+
+  .sector-card {
+    background: rgba(16, 10, 30, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 8px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .sector-card:hover { border-color: #00f0ff; transform: scale(1.02); }
+  .sector-card.selected { border-color: #ffe600; box-shadow: 0 0 12px #ffe600; }
+
+  .faction-badge {
+    display: inline-block;
+    padding: 1px 5px;
+    font-size: 9px;
+    border-radius: 2px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+</style>
+
+<div class="scanlines"></div>
+
+<!-- 3D IN-SPACE HOLOGRAPHIC BRACKETS (EVE ONLINE OVERLAY) -->
+<div class="brackets-layer" id="brackets-layer"></div>
+
+<!-- MAIN GAMEPLAY HUD -->
+<div class="hud-container" id="game-hud">
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="title-glitch">NEON DOMINION // 2099</div>
+    <div class="top-stats">
+      <div class="stat-chip">SYSTEM: <span class="val" id="hud-sector">DEMON SANCTUM (HOME)</span></div>
+      <div class="stat-chip">MUSUH: <span class="val" id="hud-hostile-dist" style="color: #22c55e;">~1.000 TAHUN CAHAYA (AMAN)</span></div>
+      <div class="stat-chip">CREDITS: <span class="val" id="hud-credits">1,250 CR</span></div>
+      <div class="stat-chip">SCORE: <span class="val" id="hud-score">0</span></div>
+    </div>
+    <div style="display: flex; gap: 8px; align-items: center;">
+      <button class="cyber-btn magenta" id="btn-warp-jump" style="padding: 4px 10px; font-size: 11px;" data-interactive="true">🚀 WARP JUMP 1.000 LY [J]</button>
+      <button class="cyber-btn" id="btn-warp-home" style="padding: 4px 10px; font-size: 11px; display: none;" data-interactive="true">🛡️ RETREAT 1.000 LY [H]</button>
+    </div>
+  </div>
+
+  <!-- Kill Feed -->
+  <div class="kill-feed" id="kill-feed"></div>
+
+  <!-- EVE ONLINE SELECTED TARGET HUD (TOP-RIGHT) -->
+  <div class="target-hud" id="target-hud">
+    <div class="target-header">
+      <span class="target-name" id="tgt-name">TARGET ACQUIRED</span>
+      <span style="font-size: 11px; color: #ff0055;" id="tgt-dist">1,280 M</span>
+    </div>
+    <div style="font-size: 10px; color: #aaa; margin-bottom: 6px;" id="tgt-class">CLASS: INTERCEPTOR // HOSTILE</div>
+
+    <div class="target-vitals">
+      <div class="target-vital-row">
+        <span>SHIELD</span>
+        <span id="tgt-shield-val">100%</span>
+      </div>
+      <div class="bar-bg"><div class="bar-fill shield-fill" id="tgt-shield-bar" style="width: 100%;"></div></div>
+
+      <div class="target-vital-row">
+        <span>ARMOR / HULL</span>
+        <span id="tgt-hull-val">100%</span>
+      </div>
+      <div class="bar-bg"><div class="bar-fill hull-fill" id="tgt-hull-bar" style="width: 100%;"></div></div>
+    </div>
+
+    <div class="target-actions">
+      <button class="btn-target-act orange" id="btn-tgt-missile" data-interactive="true">FIRE MISSILE [X]</button>
+      <button class="btn-target-act" id="btn-tgt-unlock" data-interactive="true">UNLOCK TARGET</button>
+    </div>
+  </div>
+
+  <!-- EVE ONLINE TACTICAL OVERVIEW WINDOW (RIGHT) -->
+  <div class="overview-panel" id="overview-panel">
+    <div class="overview-header">
+      <span>TACTICAL OVERVIEW</span>
+      <span style="color: #ffe600;" id="overview-count">0 CONTACTS</span>
+    </div>
+    <div class="overview-list" id="overview-list"></div>
+  </div>
+
+  <!-- Center Reticle & Lead Marker -->
+  <div class="reticle-container">
+    <div class="crosshair"></div>
+    <div class="lead-marker" id="lead-marker"></div>
+  </div>
+
+  <!-- Bottom Row: Vitals & Radar -->
+  <div class="bottom-row">
+    <!-- Vitals -->
+    <div class="vitals-panel">
+      <div class="vital-row">
+        <div class="vital-label"><span>HULL INTEGRITY</span><span id="hull-val">100%</span></div>
+        <div class="bar-bg"><div class="bar-fill hull-fill" id="hull-bar" style="width: 100%;"></div></div>
+      </div>
+      <div class="vital-row">
+        <div class="vital-label"><span>PLASMA SHIELD</span><span id="shield-val">100%</span></div>
+        <div class="bar-bg"><div class="bar-fill shield-fill" id="shield-bar" style="width: 100%;"></div></div>
+      </div>
+      <div class="vital-row">
+        <div class="vital-label"><span>THRUST ENERGY</span><span id="energy-val">100%</span></div>
+        <div class="bar-bg"><div class="bar-fill energy-fill" id="energy-bar" style="width: 100%;"></div></div>
+      </div>
+      <div class="speedometer">
+        <span>PROPULSION:</span>
+        <span id="speed-val" style="color: #00f0ff; font-weight: bold;">0 M/S</span>
+      </div>
+    </div>
+
+    <!-- Tactical Radar -->
+    <div class="radar-panel">
+      <canvas class="radar-canvas" id="radar-canvas" width="120" height="120"></canvas>
+      <div class="radar-info">
+        <span>MSL: <b id="msl-count" style="color: #f97316;">8</b></span>
+        <span>SKILL: <b id="skill-status" style="color: #ffe600;">READY</b></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN MENU (SIDE DOCKED: SPACESHIP IS PROMINENTLY VISIBLE IN THE 3D SCENE) -->
+<div class="menu-overlay active" id="menu-main">
+  <div class="cyber-panel-side">
+    <h1 class="title-glitch" style="font-size: 28px; margin-bottom: 4px;">NEON DOMINION</h1>
+    <div style="font-size: 13px; color: #00f0ff; letter-spacing: 3px; margin-bottom: 16px;">2099 // EVE OF CONQUEST</div>
+    <p style="font-size: 11px; color: #aaa; margin-bottom: 22px; line-height: 1.5;">
+      Kapal induk Anda bersiap di pangkalan Demon Sanctum. Armada musuh berada di kejauhan <b>~1.000 Tahun Cahaya</b> di seberang kehampaan galaksi, sehingga tidak terjadi perang langsung. Jelajahi sektor pangkalan dengan aman atau lakukan <b>Warp Jump (1.000 LY)</b> jika Anda siap berperang.
+    </p>
+
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <button class="cyber-btn" id="btn-play-patrol" data-interactive="true">TERBANG PATROLI (ZONA AMAN // 0 MUSUH)</button>
+      <button class="cyber-btn magenta" id="btn-play-dogfight" data-interactive="true">WARP JUMP KE PERANG MUSUH (1.000 LY)</button>
+      <button class="cyber-btn" id="btn-open-hangar" data-interactive="true">DRYDOCK HANGAR & UPGRADES</button>
+      <button class="cyber-btn yellow" id="btn-open-galaxy" data-interactive="true">GALACTIC CONQUEST WAR</button>
+      <button class="cyber-btn" id="btn-open-settings" data-interactive="true">SYSTEM CONFIGURATION</button>
+    </div>
+
+    <div style="margin-top: 20px; font-size: 10px; color: #7dd3fc; border-top: 1px solid rgba(0,240,255,0.2); padding-top: 8px;">
+      <b>KONTROL:</b> WASD Terbang | Mouse Arah | Shift/B Boost | J Warp Jump 1000 LY | H Retreat | Klik Kiri Tembak | T Lock | X Rudal
+    </div>
+  </div>
+</div>
+
+<!-- HANGAR & SHIP CUSTOMIZATION OVERLAY -->
+<div class="menu-overlay" id="menu-hangar">
+  <div class="cyber-panel-side" style="width: 460px;">
+    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(0,240,255,0.3); padding-bottom: 8px;">
+      <h2 class="title-glitch" style="font-size: 18px;">SHIPYARD BAY</h2>
+      <button class="cyber-btn" id="btn-hangar-close" style="padding: 4px 10px; font-size: 11px;" data-interactive="true">CLOSE</button>
+    </div>
+
+    <!-- Ship Switcher Controls -->
+    <div style="display: flex; justify-content: space-between; align-items: center; margin: 12px 0;">
+      <button class="cyber-btn" id="btn-ship-prev" style="padding: 6px 12px;" data-interactive="true">&lt; PREV</button>
+      <div style="text-align: center;">
+        <h3 id="ship-name" style="font-family: 'Orbitron'; font-size: 18px; color: #ffe600;">VIPER-X</h3>
+        <span id="ship-class" style="color: #00f0ff; font-size: 10px; letter-spacing: 2px;">INTERCEPTOR CLASS</span>
+      </div>
+      <button class="cyber-btn" id="btn-ship-next" style="padding: 6px 12px;" data-interactive="true">NEXT &gt;</button>
+    </div>
+
+    <!-- Stats -->
+    <div class="stat-bar-container">
+      <div style="display: flex; justify-content: space-between; font-size: 10px;"><span>HULL INTEGRITY</span><span id="stat-hull">100</span></div>
+      <div class="stat-bar-outer"><div class="stat-bar-inner" id="bar-hull" style="width: 40%;"></div></div>
+    </div>
+    <div class="stat-bar-container">
+      <div style="display: flex; justify-content: space-between; font-size: 10px;"><span>SHIELD CAPACITY</span><span id="stat-shield">80</span></div>
+      <div class="stat-bar-outer"><div class="stat-bar-inner" id="bar-shield" style="width: 35%;"></div></div>
+    </div>
+    <div class="stat-bar-container">
+      <div style="display: flex; justify-content: space-between; font-size: 10px;"><span>AFTERBURNER VELOCITY</span><span id="stat-speed">82 M/S</span></div>
+      <div class="stat-bar-outer"><div class="stat-bar-inner" id="bar-speed" style="width: 85%;"></div></div>
+    </div>
+    <div class="stat-bar-container">
+      <div style="display: flex; justify-content: space-between; font-size: 10px;"><span>FIREPOWER</span><span id="stat-damage">20 DMG</span></div>
+      <div class="stat-bar-outer"><div class="stat-bar-inner" id="bar-damage" style="width: 60%;"></div></div>
+    </div>
+
+    <div style="margin: 8px 0; padding: 8px; background: rgba(0,240,255,0.06); border-left: 2px solid #00f0ff;">
+      <div style="font-size: 11px; color: #ffe600; font-weight: bold;" id="ability-title">ABILITY: PHASE DASH</div>
+      <div style="font-size: 10px; color: #ddd; margin-top: 2px;" id="ability-desc">Instant spatial blink across 45m.</div>
+    </div>
+
+    <h4 style="color: #ff007f; font-size: 11px; margin-top: 10px;">UPGRADES</h4>
+    <div style="display: flex; flex-direction: column; gap: 6px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.05); padding: 5px 8px;">
+        <span style="font-size: 11px;">WEAPONS ARRAY (LVL <span id="lvl-wpn">1</span>)</span>
+        <button class="cyber-btn yellow" id="btn-upg-wpn" style="padding: 4px 8px; font-size: 10px;" data-interactive="true">UPGRADE (200 CR)</button>
+      </div>
+      <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.05); padding: 5px 8px;">
+        <span style="font-size: 11px;">SHIELD MATRIX (LVL <span id="lvl-shd">1</span>)</span>
+        <button class="cyber-btn" id="btn-upg-shd" style="padding: 4px 8px; font-size: 10px;" data-interactive="true">UPGRADE (200 CR)</button>
+      </div>
+      <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.05); padding: 5px 8px;">
+        <span style="font-size: 11px;">ION ENGINES (LVL <span id="lvl-eng">1</span>)</span>
+        <button class="cyber-btn magenta" id="btn-upg-eng" style="padding: 4px 8px; font-size: 10px;" data-interactive="true">UPGRADE (200 CR)</button>
+      </div>
+    </div>
+
+    <h4 style="color: #ff007f; font-size: 11px; margin-top: 10px;">NEON FINISH</h4>
+    <div style="display: flex; gap: 8px; margin-bottom: 12px;">
+      <button class="cyber-btn" id="paint-cyan" style="border-color:#00f0ff; color:#00f0ff; padding: 4px 8px; font-size: 10px;" data-interactive="true">CYAN</button>
+      <button class="cyber-btn" id="paint-magenta" style="border-color:#ff007f; color:#ff007f; padding: 4px 8px; font-size: 10px;" data-interactive="true">MAGENTA</button>
+      <button class="cyber-btn" id="paint-yellow" style="border-color:#ffe600; color:#ffe600; padding: 4px 8px; font-size: 10px;" data-interactive="true">AMBER</button>
+      <button class="cyber-btn" id="paint-purple" style="border-color:#a855f7; color:#a855f7; padding: 4px 8px; font-size: 10px;" data-interactive="true">VIOLET</button>
+    </div>
+
+    <button class="cyber-btn magenta" id="btn-select-ship" style="width: 100%; font-size: 13px; padding: 10px;" data-interactive="true">DEPLOY IN THIS SHIP</button>
+  </div>
+</div>
+
+<!-- GALACTIC WAR CONQUEST OVERLAY -->
+<div class="menu-overlay" id="menu-galaxy" style="padding-left: 0; justify-content: center;">
+  <div class="cyber-box-center" style="max-width: 920px;">
+    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(0,240,255,0.3); padding-bottom: 8px;">
+      <div>
+        <h2 class="title-glitch" style="font-size: 20px;">GALACTIC STRATEGIC COMMAND</h2>
+        <span style="font-size: 11px; color: #aaa;">DOMINION PROGRESSION: <b id="conquest-pct" style="color: #ff007f;">12%</b> (CONTROL 70% OR RIVAL CAPITALS)</span>
+      </div>
+      <div style="display: flex; gap: 8px;">
+        <button class="cyber-btn yellow" id="btn-end-turn" style="padding: 6px 12px; font-size: 11px;" data-interactive="true">CYCLE ADVANCE (+<span id="turn-income">320</span> CR)</button>
+        <button class="cyber-btn" id="btn-galaxy-close" style="padding: 6px 12px; font-size: 11px;" data-interactive="true">RETURN</button>
+      </div>
+    </div>
+
+    <div class="galaxy-grid" id="galaxy-list"></div>
+
+    <div id="sector-actions" style="margin-top: 12px; padding: 12px; background: rgba(0,0,0,0.5); border: 1px solid #00f0ff; display: flex; justify-content: space-between; align-items: center;">
+      <div>
+        <div style="font-size: 14px; font-weight: bold; color: #ffe600;" id="sec-name">SELECT A STAR SYSTEM</div>
+        <div style="font-size: 11px; color: #ddd; margin-top: 3px;" id="sec-info">Click any sector to view garrison fleets and commence fleet invasions.</div>
+      </div>
+      <div style="display: flex; gap: 8px;" id="sec-btns"></div>
+    </div>
+  </div>
+</div>
+
+<!-- SETTINGS OVERLAY -->
+<div class="menu-overlay" id="menu-settings" style="padding-left: 0; justify-content: center;">
+  <div class="cyber-box-center" style="max-width: 440px;">
+    <h2 class="title-glitch" style="font-size: 20px; margin-bottom: 16px;">TACTICAL CONFIGURATION</h2>
+    <div style="display: flex; flex-direction: column; gap: 14px;">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <span style="font-size: 12px;">SYNTH BGM</span>
+        <button class="cyber-btn" id="btn-toggle-bgm" style="padding: 4px 12px;" data-interactive="true">ENABLED</button>
+      </div>
+      <button class="cyber-btn" id="btn-settings-close" style="margin-top: 10px;" data-interactive="true">SAVE & CLOSE</button>
+    </div>
+  </div>
+</div>
+
+<!-- GAME OVER / VICTORY OVERLAY -->
+<div class="menu-overlay" id="menu-endgame" style="padding-left: 0; justify-content: center;">
+  <div class="cyber-box-center" style="text-align: center; max-width: 500px;">
+    <h1 class="title-glitch" id="endgame-title" style="font-size: 32px; margin-bottom: 10px;">SECTOR LIBERATED</h1>
+    <p id="endgame-desc" style="font-size: 13px; color: #ddd; margin-bottom: 20px; line-height: 1.5;">
+      Hostile fleet incinerated. Dominance over the sector is established.
+    </p>
+    <div style="display: flex; justify-content: center; gap: 14px;">
+      <button class="cyber-btn magenta" id="btn-endgame-restart" data-interactive="true">PLAY AGAIN</button>
+      <button class="cyber-btn" id="btn-endgame-hangar" data-interactive="true">SHIP HANGAR</button>
+    </div>
+  </div>
+</div>

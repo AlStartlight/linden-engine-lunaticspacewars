@@ -1,0 +1,1 @@
+var e=class{rotSpeedY=1.5;rotSpeedX=0;rotSpeedZ=0;ctx;onInit(e){this.ctx=e}onUpdate(e){let t=this.ctx.entity.getTransform();t&&(t.rotation.y=(t.rotation.y+this.rotSpeedY*e)%360,this.rotSpeedX!==0&&(t.rotation.x=(t.rotation.x+this.rotSpeedX*e)%360),this.rotSpeedZ!==0&&(t.rotation.z=(t.rotation.z+this.rotSpeedZ*e)%360))}};export{e as default};
